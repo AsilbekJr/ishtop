@@ -71,7 +71,7 @@ function ContactItem({
 
 export default function ProfileCard({ profile }: { profile: Profile }) {
   return (
-    <Card className="w-full max-w-4xl mx-auto">
+    <Card className="my-6 w-full max-w-4xl mx-auto">
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 p-6">
         {/* Left column: avatar + basic info */}
         <div className="flex-shrink-0 flex items-center md:items-start md:flex-col gap-4 md:w-56">

@@ -1,175 +1,30 @@
-// import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import { Menu, X } from "lucide-react";
-// import { useDispatch, useSelector } from "react-redux";
-// import type { RootState } from "@/redux/store";
-// import { logout } from "@/redux/authSlice";
-// // import { Button } from "./ui/button";
-
 import type { RootState } from "@/redux/store";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { logout } from "@/redux/authSlice";
-
-// export default function Navbar() {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const { isAuthenticated, user } = useSelector(
-//     (state: RootState) => state.auth
-//   );
-//   const dispatch = useDispatch();
-//   const handleLogout = () => {
-//     dispatch(logout());
-//   };
-
-//   return (
-//     <nav className="bg-blue-600 text-white px-6 py-4 flex items-center justify-between">
-//       {/* Logo */}
-//       <div className="text-xl font-bold">
-//         <Link to="/">UstaTop</Link>
-//       </div>
-//       {/* Desktop Menu */}
-//       <div className="hidden md:flex space-x-6 items-center">
-//         <Link to="/" className="hover:text-gray-200">
-//           Bosh sahifa
-//         </Link>
-//         <Link to="/xizmatlar" className="hover:text-gray-200">
-//           Xizmatlar
-//         </Link>
-//         <Link to="/" className="hover:text-gray-200">
-//           Biz haqimizda
-//         </Link>
-//         <Link to="/" className="hover:text-gray-200">
-//           Aloqa
-//         </Link>
-//         {isAuthenticated ? (
-//           <>
-//             <h2 className="text-orange-400">{user?.username}</h2>
-//             <button
-//               onClick={handleLogout}
-//               className="bg-red-500 px-2 py-1 rounded"
-//             >
-//               Logout
-//             </button>
-//           </>
-//         ) : (
-//           <>
-//             <Link to="/auth/login">
-//               <button className="bg-white text-blue-600 hover:bg-gray-100 rounded py-1 px-2 cursor-pointer">
-//                 Login
-//               </button>
-//             </Link>
-//             <Link to="auth/register">
-//               <button className="bg-white text-blue-600 hover:bg-gray-100 rounded py-1 px-2 cursor-pointer">
-//                 Ro'yxatdan o'tish
-//               </button>
-//             </Link>
-//           </>
-//         )}
-//       </div>
-
-//       {/* Mobile Burger */}
-//       <button
-//         onClick={() => setIsOpen(!isOpen)}
-//         className="md:hidden p-2 rounded-lg hover:bg-blue-700"
-//       >
-//         {isOpen ? <X size={24} /> : <Menu size={24} />}
-//       </button>
-
-//       {/* Sidebar (Mobile) */}
-//       <div
-//         className={`fixed top-0 right-0 h-full w-64 bg-blue-700 text-white transform
-//         ${isOpen ? "translate-x-0" : "translate-x-full"}
-//         transition-transform duration-300 ease-in-out md:hidden z-50`}
-//       >
-//         <div className="flex justify-between items-center p-4 border-b border-blue-500">
-//           <h2 className="text-lg font-bold">Menu</h2>
-//           <button onClick={() => setIsOpen(false)}>
-//             <X size={24} />
-//           </button>
-//         </div>
-//         <ul className="flex flex-col p-4 space-y-4">
-//           <li>
-//             <Link
-//               to="/"
-//               className="hover:text-gray-200"
-//               onClick={() => setIsOpen(false)}
-//             >
-//               Bosh sahifa
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               to="/xizmatlar"
-//               className="hover:text-gray-200"
-//               onClick={() => setIsOpen(false)}
-//             >
-//               Xizmatlar
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               to="/"
-//               className="hover:text-gray-200"
-//               onClick={() => setIsOpen(false)}
-//             >
-//               Biz haqimizda
-//             </Link>
-//           </li>
-//           <li>
-//             <Link
-//               to="/"
-//               className="hover:text-gray-200"
-//               onClick={() => setIsOpen(false)}
-//             >
-//               Aloqa
-//             </Link>
-//           </li>
-//         </ul>
-
-//         {isAuthenticated ? (
-//           <div className="flex flex-col p-4 gap-2 w-[100%]">
-//             <h2 className="text-orange-400">
-//               {JSON.parse(localStorage.getItem("user") || "{}")?.user?.login}
-//             </h2>
-//             <button
-//               onClick={handleLogout}
-//               className="flex flex-col p-2 gap-2  bg-red-500 rounded"
-//             >
-//               Logout
-//             </button>
-//           </div>
-//         ) : (
-//           <div className="flex flex-col p-4 gap-2 w-[100%]">
-//             <Link to="/auth/login">
-//               <button
-//                 className="w-[100%]  bg-white text-blue-600 hover:bg-gray-100 rounded py-1 px-2 cursor-pointer"
-//                 onClick={() => setIsOpen(false)}
-//               >
-//                 Login
-//               </button>
-//             </Link>
-//             <Link to="auth/register">
-//               <button
-//                 className="w-[100%] bg-white text-blue-600 hover:bg-gray-100 rounded py-1 px-2 cursor-pointer"
-//                 onClick={() => setIsOpen(false)}
-//               >
-//                 Ro'yxatdan o'tish
-//               </button>
-//             </Link>
-//           </div>
-//         )}
-//       </div>
-//     </nav>
-//   );
-// }
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user } = useSelector((state: RootState) => state.auth);
+  const { user, isAuthenticated } = useSelector(
+    (state: RootState) => state.auth
+  );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     /* Header */
@@ -213,27 +68,44 @@ export default function Navbar() {
             >
               Narxlar
             </a>
-            {user?.extraInfo ? (
-              <>
-                <div className="mx-1">{user?.username}</div>
-                <Button
-                  className="bg-red-600 text-white mx-1"
-                  onClick={() => dispatch(logout())}
-                >
-                  Logout
-                </Button>
-              </>
+
+            {/* Agar user login bo‘lgan bo‘lsa */}
+            {user?.extraInfo && isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="font-semibold text-blue-600 border-blue-600 hover:bg-blue-50"
+                  >
+                    {user?.username}
+                  </Button>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuLabel>Hisob</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile">Profil</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={handleLogout}
+                    className="text-red-600 cursor-pointer"
+                  >
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             ) : (
               <>
                 <Link
                   to={"/auth/login"}
-                  className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition"
+                  className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-gradient-to-br from-blue-600 to-purple-700 hover:text-white transition"
                 >
                   Kirish
                 </Link>
                 <Link
                   to={"/auth/register"}
-                  className="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 hover:shadow-lg transition transform hover:-translate-y-0.5"
+                  className="px-6 py-2 bg-gradient-to-br from-blue-600 to-purple-700 text-white rounded-lg font-semibold hover:bg-blue-700 hover:shadow-lg transition transform hover:-translate-y-0.5"
                 >
                   Ro'yxatdan o'tish
                 </Link>
@@ -278,17 +150,33 @@ export default function Navbar() {
               >
                 Narxlar
               </a>
+
               {user?.extraInfo ? (
-                <>
-                  {" "}
-                  <div className="mx-1">{user?.username}</div>
-                  <Button
-                    className="bg-red-600 text-white mx-1"
-                    onClick={() => dispatch(logout())}
-                  >
-                    Logout
-                  </Button>
-                </>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="font-semibold text-blue-600 border-blue-600 hover:bg-blue-50"
+                    >
+                      {user?.username}
+                    </Button>
+                  </DropdownMenuTrigger>
+
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuItem asChild>
+                      <Link to="/profile">Profil</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => {
+                        dispatch(logout());
+                        setMobileMenuOpen(false);
+                      }}
+                      className="text-red-600 cursor-pointer"
+                    >
+                      Logout
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               ) : (
                 <>
                   <Link

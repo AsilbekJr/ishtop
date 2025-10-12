@@ -69,7 +69,7 @@ export default function ProfileForm() {
         telegram,
       })
     );
-    navigate("/");
+    navigate("/auth/login");
   };
 
   // --- 4. JSX ---

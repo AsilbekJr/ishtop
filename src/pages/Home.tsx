@@ -1,5 +1,6 @@
 // import { useState } from "react";
 
+import Actives from "@/components/Actives";
 import Categories from "@/components/Categories";
 import Cta from "@/components/Cta";
 import HowItWorks from "@/components/HowItWorks";
@@ -299,6 +300,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Actives />
       <Categories />
       <HowItWorks />
       <Testimonials />
