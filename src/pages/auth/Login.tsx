@@ -29,6 +29,7 @@ const formSchema = z.object({
   username: z.string().min(5).max(50),
   password: z.string().min(4),
 });
+type FormType = z.infer<typeof formSchema>;
 
 export default function Login() {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export default function Login() {
   const { error, isAuthenticated } = useSelector(
     (state: RootState) => state.auth
   );
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
@@ -44,27 +45,25 @@ export default function Login() {
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+  const handleSubmit = (values: FormType) => {
     const { username, password } = values;
     dispatch(login({ username, password }));
     form.reset();
-    if (isAuthenticated) {
-      navigate("/");
-    }
   };
-
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/");
     }
   }, [isAuthenticated, navigate]);
+
   useEffect(() => {
     if (error) {
       alert(error);
     }
   }, [error]);
+
   return (
-    <div className="w-full my-[4rem]">
+    <div className="w-full min-h-screen flex items-center justify-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
@@ -83,7 +82,7 @@ export default function Login() {
                 name="username"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Login</FormLabel>
+                    <FormLabel>Kirish</FormLabel>
                     <FormControl>
                       <Input placeholder="shadcn" {...field} />
                     </FormControl>
@@ -103,7 +102,7 @@ export default function Login() {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="shadcn" {...field} />
+                      <Input type="password" placeholder="shadcn" {...field} />
                     </FormControl>
                     <FormDescription>Bu sizning parolingiz.</FormDescription>
                     <FormMessage />

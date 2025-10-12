@@ -151,7 +151,7 @@ export default function Navbar() {
                 Narxlar
               </a>
 
-              {user?.extraInfo ? (
+              {user?.extraInfo && isAuthenticated ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button

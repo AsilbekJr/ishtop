@@ -23,7 +23,7 @@ const formSchema = z.object({
   phone: z.string().min(9, "Telefon raqamini to‘liq kiriting"),
   telegram: z.string().min(2, "Telegram foydalanuvchi nomini kiriting"),
 });
-
+type FormType = z.infer<typeof formSchema>;
 // --- 2. Form komponenti ---
 export default function ProfileForm() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function ProfileForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<z.infer<typeof formSchema>>({
+  } = useForm<FormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: "",
@@ -48,7 +48,7 @@ export default function ProfileForm() {
   });
 
   // 3. Submit funksiyasi
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
+  const onSubmit = (data: FormType) => {
     const {
       experienceYears,
       fullName,

@@ -29,9 +29,13 @@ const saveUser: User | null = JSON.parse(
   localStorage.getItem("user") || "null"
 );
 
+const savedAuth = JSON.parse(
+  localStorage.getItem("isAuthenticated") || "false"
+);
+
 const initialState: AuthState = {
   user: saveUser,
-  isAuthenticated: !!saveUser,
+  isAuthenticated: savedAuth,
   error: null,
 };
 
@@ -65,6 +69,7 @@ const authSlice = createSlice({
         state.user = savedUser;
         state.isAuthenticated = true;
         state.error = null;
+        localStorage.setItem("isAuthenticated", "true");
       } else {
         state.error = "Invalid username or password";
       }
@@ -74,6 +79,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.error = null;
       localStorage.removeItem("user");
+      localStorage.removeItem("isAuthenticated");
     },
   },
 });
