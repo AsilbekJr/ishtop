@@ -254,16 +254,18 @@ export default function Home() {
             </div>
 
             {/* Search Box */}
-            <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-2xl">
-              <h3 className="text-2xl font-bold text-slate-800 mb-6">
+            <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-2xl max-w-full">
+              <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center sm:text-left">
                 Kerakli xizmatni toping
               </h3>
+
               <div className="space-y-4">
+                {/* Select */}
                 <div className="relative">
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-600 focus:outline-none appearance-none bg-white text-slate-700"
+                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-600 focus:outline-none appearance-none bg-white text-slate-700 text-sm sm:text-base"
                   >
                     <option value="">Xizmat turini tanlang</option>
                     <option value="santexnika">🔧 Santexnika</option>
@@ -273,23 +275,25 @@ export default function Home() {
                     <option value="uy">🏠 Uy xizmatlari</option>
                     <option value="it">💻 IT va texnologiya</option>
                   </select>
+
                   <ChevronDown
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
                     size={20}
                   />
                 </div>
 
-                <div className="flex gap-3">
+                {/* Input + Button */}
+                <div className="flex flex-col sm:flex-row gap-3">
                   <input
                     type="text"
                     value={selectedCity}
                     onChange={(e) => setSelectedCity(e.target.value)}
                     placeholder="Shahar yoki tuman"
-                    className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-600 focus:outline-none"
+                    className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-600 focus:outline-none text-sm sm:text-base"
                   />
                   <button
                     onClick={handleSearch}
-                    className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition flex items-center gap-2 whitespace-nowrap"
+                    className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
                     <Search size={20} />
                     Qidirish
