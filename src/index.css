@@ -133,15 +133,59 @@
 @layer utilities {
   @media (max-width: 350px) {
     .text-xs-350 {
-      font-size: 0.85rem !important;
+      font-size: 0.85rem;
     }
     .px-xs-350 {
-      padding-left: 0.8rem !important;
-      padding-right: 0.8rem !important;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
     }
     .py-xs-350 {
-      padding-top: 0.6rem !important;
-      padding-bottom: 0.6rem !important;
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+    }
+  }
+}
+@layer utilities {
+  @media (max-width: 350px) {
+    /* Kichik shriftlar uchun umumiy klasslar */
+    .text-xs-350 {
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+    }
+
+    .text-sm-350 {
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+    }
+
+    .text-base-350 {
+      font-size: 1rem;
+      line-height: 1.4rem;
+    }
+
+    .text-lg-350 {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
+
+    /* Tugmalar va paddinglar kichrayadi */
+    .btn-xs-350 {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .p-xs-350 {
+      padding: 0.5rem;
+    }
+
+    .px-xs-350 {
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+    }
+
+    .py-xs-350 {
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
     }
   }
 }

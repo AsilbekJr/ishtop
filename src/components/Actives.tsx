@@ -165,47 +165,49 @@ export default function Actives() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 max-[400px]:px-2">
       {/* Tabs */}
-      <div className="flex space-x-4 mb-8 border-b">
+      <div className="flex space-x-2 mb-6 border-b overflow-x-auto">
         <button
           onClick={() => setActiveTab("jobs")}
-          className={`px-6 py-3 font-semibold transition ${
+          className={`px-4 py-2 font-semibold transition max-[400px]:text-sm ${
             activeTab === "jobs"
               ? "text-blue-600 border-b-2 border-blue-600"
               : "text-gray-600 hover:text-blue-600"
           }`}
         >
-          <Briefcase className="w-5 h-5 inline mr-2" />
+          <Briefcase className="w-4 h-4 inline mr-1" />
           Ish E'lonlari
         </button>
         <button
           onClick={() => setActiveTab("workers")}
-          className={`px-6 py-3 font-semibold transition ${
+          className={`px-4 py-2 font-semibold transition max-[400px]:text-sm ${
             activeTab === "workers"
               ? "text-blue-600 border-b-2 border-blue-600"
               : "text-gray-600 hover:text-blue-600"
           }`}
         >
-          <Users className="w-5 h-5 inline mr-2" />
+          <Users className="w-4 h-4 inline mr-1" />
           Ishchilar
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar - Categories */}
-        <div className="lg:col-span-1">
-          <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">Kategoriyalar</h3>
-              <Filter className="w-5 h-5 text-gray-400" />
+        <div className="lg:col-span-1 order-last lg:order-none">
+          <div className="bg-white rounded-xl shadow-sm p-4 sticky top-24 max-[400px]:p-3">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="font-semibold text-gray-900 max-[400px]:text-sm">
+                Kategoriyalar
+              </h3>
+              <Filter className="w-4 h-4 text-gray-400" />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition ${
+                  className={`w-full text-left px-3 py-2 rounded-lg transition max-[400px]:text-sm ${
                     selectedCategory === cat.id
                       ? "bg-blue-50 text-blue-600 font-medium"
                       : "text-gray-700 hover:bg-gray-50"
@@ -213,47 +215,49 @@ export default function Actives() {
                 >
                   <div className="flex items-center justify-between">
                     <span>{cat.name}</span>
-                    <span className="text-sm text-gray-500">{cat.count}</span>
+                    <span className="text-xs text-gray-500">{cat.count}</span>
                   </div>
                 </button>
               ))}
             </div>
           </div>
         </div>
-        <div className="lg:col-span-3">
-          {activeTab === "jobs" ? (
-            <div className="space-y-4">
-              {jobs.map((job) => (
+
+        <div className="lg:col-span-3 space-y-4">
+          {activeTab === "jobs"
+            ? jobs.map((job) => (
                 <div
                   key={job.id}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition p-6 border border-gray-100"
+                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100 max-[400px]:p-3"
                 >
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-xl font-semibold text-gray-900">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-lg font-semibold text-gray-900 max-[400px]:text-base">
                           {job.title}
                         </h3>
                         {job.verified && (
-                          <span className="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">
+                          <span className="bg-blue-100 text-blue-600 text-[10px] px-2 py-0.5 rounded-full font-medium">
                             Tasdiqlangan
                           </span>
                         )}
                       </div>
-                      <p className="text-gray-600 font-medium">{job.company}</p>
+                      <p className="text-gray-600 font-medium max-[400px]:text-sm">
+                        {job.company}
+                      </p>
                     </div>
-                    <button className="text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition">
-                      <ChevronRight className="w-5 h-5" />
+                    <button className="text-blue-600 hover:bg-blue-50 p-1.5 rounded-lg transition">
+                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
 
-                  <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-600">
+                  <div className="flex flex-wrap gap-3 mb-3 text-xs text-gray-600">
                     <div className="flex items-center">
-                      <MapPin className="w-4 h-4 mr-1" />
+                      <MapPin className="w-3 h-3 mr-1" />
                       {job.location}
                     </div>
                     <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
+                      <Clock className="w-3 h-3 mr-1" />
                       {job.type}
                     </div>
                     <div className="flex items-center font-semibold text-green-600">
@@ -261,82 +265,79 @@ export default function Actives() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     {job.skills.map((skill, idx) => (
                       <span
                         key={idx}
-                        className="bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-sm"
+                        className="bg-purple-50 text-purple-600 px-2 py-0.5 rounded-full text-xs"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t">
-                    <span className="text-sm text-gray-500">
+                  <div className="flex items-center justify-between pt-3 border-t">
+                    <span className="text-xs text-gray-500">
                       {job.posted} • {job.applications} ariza
                     </span>
-                    <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                    <button className="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm hover:bg-blue-700 transition">
                       Ariza Topshirish
                     </button>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {workers.map((worker) => (
+              ))
+            : workers.map((worker) => (
                 <div
                   key={worker.id}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition p-6 border border-gray-100"
+                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100 max-[400px]:p-3"
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-lg font-bold">
                         {worker.name
                           .split(" ")
                           .map((n) => n[0])
                           .join("")}
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-0.5 max-[400px]:text-base">
                           {worker.name}
                         </h3>
-                        <p className="text-gray-600 font-medium">
+                        <p className="text-gray-600 font-medium max-[400px]:text-sm">
                           {worker.profession}
                         </p>
-                        <div className="flex items-center gap-3 mt-2 text-sm text-gray-600">
+                        <div className="flex items-center gap-2 mt-1 text-xs text-gray-600">
                           <span>{worker.experience} tajriba</span>
                           <span>•</span>
                           <div className="flex items-center">
-                            <MapPin className="w-4 h-4 mr-1" />
+                            <MapPin className="w-3 h-3 mr-1" />
                             {worker.location}
                           </div>
                         </div>
                       </div>
                     </div>
                     {worker.available && (
-                      <span className="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">
+                      <span className="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full font-medium">
                         Mavjud
                       </span>
                     )}
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     {worker.skills.map((skill, idx) => (
                       <span
                         key={idx}
-                        className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm"
+                        className="bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full text-xs"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center text-yellow-500">
-                        <Star className="w-5 h-5 fill-current mr-1" />
+                  <div className="flex items-center justify-between pt-3 border-t">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center text-yellow-500 text-sm">
+                        <Star className="w-4 h-4 fill-current mr-1" />
                         <span className="font-semibold text-gray-900">
                           {worker.rating}
                         </span>
@@ -344,24 +345,22 @@ export default function Actives() {
                           ({worker.reviews} sharh)
                         </span>
                       </div>
-                      <span className="text-green-600 font-semibold">
+                      <span className="text-green-600 font-semibold text-sm">
                         {worker.rate}
                       </span>
                     </div>
                     <div className="flex gap-2">
-                      <button className="border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition">
+                      <button className="border border-blue-600 text-blue-600 px-3 py-1 rounded-lg text-xs hover:bg-blue-50 transition">
                         <MessageSquare className="w-4 h-4 inline mr-1" />
                         Xabar
                       </button>
-                      <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                      <button className="bg-blue-600 text-white px-4 py-1 rounded-lg text-xs hover:bg-blue-700 transition">
                         Yollash
                       </button>
                     </div>
                   </div>
                 </div>
               ))}
-            </div>
-          )}
         </div>
       </div>
     </div>
