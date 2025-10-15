@@ -4,7 +4,7 @@ export default function Cta() {
   return (
     <section className="relative h-[400px] flex items-center justify-center text-white text-center bg-gradient-to-br from-purple-900 via-blue-900 to-purple-900 ">
       <img
-        src="./src/assets/images/happy.png"
+        src="/images/happy.png"
         alt="workers"
         className="absolute inset-0 h-full w-full object-cover bg-no-repeat "
       />

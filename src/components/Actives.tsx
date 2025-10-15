@@ -280,7 +280,7 @@ export default function Actives() {
                     <span className="text-xs text-gray-500">
                       {job.posted} • {job.applications} ariza
                     </span>
-                    <button className="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm hover:bg-blue-700 transition">
+                    <button className="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-xs md:text-sm lg:text-sm hover:bg-blue-700 transition">
                       Ariza Topshirish
                     </button>
                   </div>
@@ -341,20 +341,20 @@ export default function Actives() {
                         <span className="font-semibold text-gray-900">
                           {worker.rating}
                         </span>
-                        <span className="text-gray-500 ml-1">
+                        <span className="text-gray-500 ml-1 text-[11px] lg:text-1xl">
                           ({worker.reviews} sharh)
                         </span>
                       </div>
-                      <span className="text-green-600 font-semibold text-sm">
+                      <span className="text-green-600 font-semibold text-xs md:text-sm lg:text-sm">
                         {worker.rate}
                       </span>
                     </div>
                     <div className="flex gap-2">
-                      <button className="border border-blue-600 text-blue-600 px-3 py-1 rounded-lg text-xs hover:bg-blue-50 transition">
+                      <button className="border border-blue-600 text-blue-600 px-3 py-1 rounded-lg text-xs md:text-sm lg:text-sm hover:bg-blue-50 transition">
                         <MessageSquare className="w-4 h-4 inline mr-1" />
                         Xabar
                       </button>
-                      <button className="bg-blue-600 text-white px-4 py-1 rounded-lg text-xs hover:bg-blue-700 transition">
+                      <button className="bg-blue-600 text-white px-4 py-1 rounded-lg text-xs md:text-sm lg:text-sm hover:bg-blue-700 transition">
                         Yollash
                       </button>
                     </div>
